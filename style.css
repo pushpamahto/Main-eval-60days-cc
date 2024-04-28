@@ -6,6 +6,12 @@ body{
     width: 80%;
     margin: auto;
 }
+th{
+    background-color: #cdcbcb;
+}
+tr{
+    background-color: rgb(195, 244, 227);
+}
 h1 {
     text-align: center;
 }
@@ -39,4 +45,5 @@ select {
 #pagination button {
     padding: 10px 40px;
     font-size: 15px;
+    background-color: aquamarine;
 }

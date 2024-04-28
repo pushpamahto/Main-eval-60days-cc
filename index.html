@@ -3,59 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Building a Employee Management System with Filter , Sort and Pagination</title>
-    <style>
-        body{
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            width: 80%;
-            margin: auto;
-        }
-        h1 {
-            text-align: center;
-        }
-
-        .filter-sort-container p{ 
-            font-size: 20px;
-        }
-
-        .filter-sort-container  {
-          display: flex;
-          align-items: center;
-        }
-
-        select {
-            font-size: 15px;
-            height: 40px;
-        }
-
-        #EmpTable {
-            width: 90%;
-            margin: auto;
-            text-align: left;
-            font-size: 20px;
-        }
-
-        #pagination {
-            margin-top: 50px;
-            text-align: center;
-        }
-
-        #pagination button {
-            padding: 10px 40px;
-            font-size: 15px;
-        }
-    </style>
+    <title>Main eval</title>
+    <link rel="stylesheet" href="style.css">
+   
 </head>
 <body>
     <h1> Employee Management System</h1>
-    <!-- Filter Options HTML -->
+    <!-- Filter  -->
     <div class="filter-sort-container" style="display: flex; justify-content: space-evenly;">
         <!-- Department Filter  -->
         <p>Filter by Department : </p>
         <select name="" id="dept-filter">
-            <option value="">Select Department</option>
+            <option value="">--Select Department--</option>
             <option value="engineering">Engineering</option>
             <option value="finance">Finance</option>
             <option value="operations">Operations</option>
@@ -65,7 +24,7 @@
         <!-- Gender Filter  -->
         <p>Filter By Gender : </p>
         <select name="" id="gender-filter">
-            <option value="">Select Gender </option>
+            <option value="">--Select Gender-- </option>
             <option value="male">Male</option>
             <option value="female">Female</option>
             <option value="others">Others</option>
@@ -74,7 +33,7 @@
         <!-- Sort By Salary  -->
         <p>Sort By Salary : </p>
         <select name="" id="salary-sort">
-            <option value="">Select Sorting </option>
+            <option value="">--Select Sorting-- </option>
             <option value="asc">Low to High</option>
             <option value="desc">High to Low</option>
         </select>
@@ -84,7 +43,7 @@
             <table id="EmpTable">
                 <thead>
                     <tr>
-                        <th>S. No 1</th>
+                        <th>S. No </th>
                         <th>Name </th>
                         <th>Gender</th>
                         <th>Department</th>
@@ -98,7 +57,7 @@
     </div>
     
     <div id="pagination">
-        <button id="prev">Prevous</button>
+        <button id="prev">Prev</button>
         <button id="next">Next</button>
     </div>
     
