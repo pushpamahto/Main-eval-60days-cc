@@ -1,58 +1,88 @@
-const baseUrl = "https://dbioz2ek0e.execute-api.ap-south-1.amazonaws.com/mockapi/get-employees"
-let currentPage = 1;
-let totalPages = 1;
+ const EmployeeContainer = document.getElementById('employee-container')
+const EmpTable = document.getElementById('EmpTable')
+const EmpBody = document.getElementById('tbody')
 
-const departmentFilter = document.getElementById("department");
-const genderFilter = document.getElementById("gender");
-const sortOption = document.getElementById("sort");
-const prevPageBtn = document.getElementById("prevPage");
-const nextPageBtn = document.getElementById("nextPage");
-const tableBody = document.getElementById("employeeData");
+let showEmployees = (EmpList) => {
+    EmpBody.innerHTML = "";
 
-async function fetchEmployees(){
-    const url = `${baseUrl}?page=${currentPage}&limit=10`;
-    const response = await fetch(url);
-    const data = await response.json();
-    return data;
-}
+    EmpList.forEach((emp)=> {
 
-async function populateTable(){
-    const employees = await fetchEmployees();
-    totalPages = Math.ceil(employees.length / 10);
+        const tRow = document.createElement('tr');
 
-    tableBody.innerHTML = "";
-
-    employees.forEach((employees, index) =>{
-        const row = document.createElement("tr");
-
-        row.innerHTML = `
-            <td>${index+1}</td>
-            <td>${employees.name}</td>
-            <td>${employees.gender}</td>
-            <td>${employees.department}</td>
-            <td>${employees.salary}</td>
-         `;
-         tableBody.appendChild(row);
+        const SNotd = document.createElement('td')
+            SNotd.textContent = emp.id
+        const Nametd = document.createElement('td')
+            Nametd.textContent = emp.name;
+        const Gendertd = document.createElement('td')
+            Gendertd.textContent = emp.gender
+        const Departmenttd = document.createElement('td')
+            Departmenttd.textContent = emp.department;
+        const Salarytd = document.createElement('td')
+            Salarytd.textContent = emp.salary;
+        
+            tRow.append(
+                SNotd ,
+                Nametd,
+                Gendertd,
+                Departmenttd,
+                Salarytd
+            )
+            EmpBody.appendChild(
+                tRow
+            )
+            
+            EmpTable.appendChild(
+                EmpBody
+            )
     })
 
-    prevPageBtn.disabled = currentPage === 1;
-    nextPageBtn.disabled = currentPage === totalPages;
 }
 
-departmentFilter.addEventListener("change",populateTable);
-genderFilter.addEventListener("change",populateTable);
-sortOption.addEventListener("change",populateTable);
-prevPageBtn.addEventListener("click", () =>{
-    if(currentPage > 1){
-        currentPage--;
-        populateTable();
+
+const GetEmpData = async (sortValue , deptFilterValue , genderFiterValue) => {
+    let URL = "https://dbioz2ek0e.execute-api.ap-south-1.amazonaws.com/mockapi/get-employees?page=1&limit=10";
+    
+    if(sortValue) {
+        URL += `&sort=salary&order=${sortValue}`;
     }
-})
-nextPageBtn.addEventListener("click", () =>{
-    if(currentPage < totalPages){
-        currentPage++;
-        populateTable();
+    if(deptFilterValue) {
+        URL += `&filterBy=department&filterValue=${deptFilterValue}`;
     }
+    if(genderFiterValue) {
+        URL += `&filterBy=gender&filterValue=${genderFiterValue}`;
+    }
+
+    try {
+        const response = await fetch(URL)
+        const finalResponse = await response.json()
+        showEmployees(finalResponse.data)
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+GetEmpData()
+
+// Sorting Logic Here 
+const sortOrder = document.getElementById('salary-sort')
+sortOrder.addEventListener('change' , () => {
+    GetEmpData(sortOrder.value , '' , '')
 })
 
-populateTable();
+
+// Department Filter Logic here 
+// Catch the element 
+const deptFilter = document.getElementById('dept-filter')
+
+deptFilter.addEventListener('change' , () => {
+    GetEmpData('' , deptFilter.value , '')
+})
+
+// Gender Filter Logic here 
+// Catch the element 
+const genderFilter = document.getElementById('gender-filter')
+
+genderFilter.addEventListener('change' , () => {
+    GetEmpData('' , '' , genderFilter.value)
+    // console.log(genderFilter.value)
+})

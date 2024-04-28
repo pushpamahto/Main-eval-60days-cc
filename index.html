@@ -3,69 +3,105 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Main-Evaluation-60days</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Building a Employee Management System with Filter , Sort and Pagination</title>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            width: 80%;
+            margin: auto;
+        }
+        h1 {
+            text-align: center;
+        }
+
+        .filter-sort-container p{ 
+            font-size: 20px;
+        }
+
+        .filter-sort-container  {
+          display: flex;
+          align-items: center;
+        }
+
+        select {
+            font-size: 15px;
+            height: 40px;
+        }
+
+        #EmpTable {
+            width: 90%;
+            margin: auto;
+            text-align: left;
+            font-size: 20px;
+        }
+
+        #pagination {
+            margin-top: 50px;
+            text-align: center;
+        }
+
+        #pagination button {
+            padding: 10px 40px;
+            font-size: 15px;
+        }
+    </style>
 </head>
 <body>
+    <h1> Employee Management System</h1>
+    <!-- Filter Options HTML -->
+    <div class="filter-sort-container" style="display: flex; justify-content: space-evenly;">
+        <!-- Department Filter  -->
+        <p>Filter by Department : </p>
+        <select name="" id="dept-filter">
+            <option value="">Select Department</option>
+            <option value="engineering">Engineering</option>
+            <option value="finance">Finance</option>
+            <option value="operations">Operations</option>
+            <option value="marketing">Marketing</option>
+            <option value="hr">HR</option>
+        </select>
+        <!-- Gender Filter  -->
+        <p>Filter By Gender : </p>
+        <select name="" id="gender-filter">
+            <option value="">Select Gender </option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="others">Others</option>
+        </select>
 
-    <div class="container">
-        <h1>Employee management System</h1>
-        <div>
-            <label for="department">Filter by Department:</label>
-            <select name="" id="department">
-                <option value="">--Select Department--</option>
-                <option value="hr">hr</option>
-                <option value="finance">finance</option>
-                <option value="marketing">marketing</option>
-                <option value="engineering">engineering</option>
-                <option value="operations">operations</option>
-            </select>
-
-            <label for="gender">Filter by gender</label>
-            <select name="" id="gender">
-                <option value="">--Select Gender--</option>
-                <option value="male">male</option>
-                <option value="female">female</option>
-                <option value="others">others</option>
-            </select>
-
-            <label for="sort">Sort by Salary</label>
-            <select name="" id="sort">
-                <option value="">--Select order--</option>
-                <option value="asc">low to high</option>
-                <option value="desc">high to low</option>
-            </select>
-        </div>
-
-        <table id="employeeTable">
-            <thead>
-                <tr>
-                    <th>S.no</th>
-                    <th>Name</th>
-                    <th>Gender</th>
-                    <th>Department</th>
-                    <th>Salary</th>
-                </tr>
-            </thead>
-
-            <tbody id="employeeData">
-                <!-- employeebody will be here -->
-
-            </tbody>
-
-        </table>
-
-        <div id="pagination">
-            <!-- pagination will be here -->
-            <button id="prevPage" disabled>Prev</button>
-            <button id="nextPage">Next</button>
-        </div>
-
-
+        <!-- Sort By Salary  -->
+        <p>Sort By Salary : </p>
+        <select name="" id="salary-sort">
+            <option value="">Select Sorting </option>
+            <option value="asc">Low to High</option>
+            <option value="desc">High to Low</option>
+        </select>
     </div>
-
+ <hr>
+    <div id="employee-container">
+            <table id="EmpTable">
+                <thead>
+                    <tr>
+                        <th>S. No 1</th>
+                        <th>Name </th>
+                        <th>Gender</th>
+                        <th>Department</th>
+                        <th>Salary</th>
+                    </tr>
+                </thead>
+                <tbody id="tbody">
+                    <!-- All Dyanamic tr and td here  -->
+                </tbody>
+            </table>
+    </div>
     
+    <div id="pagination">
+        <button id="prev">Prevous</button>
+        <button id="next">Next</button>
+    </div>
+    
+    <script src="index.js"></script>
 </body>
-
-<script src="index.js"></script>
 </html>

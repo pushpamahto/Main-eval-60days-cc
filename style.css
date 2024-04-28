@@ -1,32 +1,42 @@
+
 body{
-    font-family: Arial, Helvetica, sans-serif;
-    padding: 20px;
     margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    width: 80%;
+    margin: auto;
 }
-h1{
+h1 {
     text-align: center;
 }
-.filters{
-    margin-bottom: 20px;
 
+.filter-sort-container p{ 
+    font-size: 20px;
 }
-.filters label{
-    margin-right: 10px;
+
+.filter-sort-container  {
+  display: flex;
+  align-items: center;
 }
-.pagination{
-    margin-top: 20px;
+
+select {
+    font-size: 15px;
+    height: 40px;
+}
+
+#EmpTable {
+    width: 90%;
+    margin: auto;
+    text-align: left;
+    font-size: 20px;
+}
+
+#pagination {
+    margin-top: 50px;
     text-align: center;
 }
-table{
-    width: 100%;
-    border-collapse: collapse;
-}
-th,td{
-   border: 1px solid black;
-   padding: 8px;
-   text-align: center;
 
-}
-th{
-    background-color: #f2f2f2;
+#pagination button {
+    padding: 10px 40px;
+    font-size: 15px;
 }
