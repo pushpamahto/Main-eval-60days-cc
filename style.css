@@ -1,0 +1,32 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 20px;
+    margin: 0;
+}
+h1{
+    text-align: center;
+}
+.filters{
+    margin-bottom: 20px;
+
+}
+.filters label{
+    margin-right: 10px;
+}
+.pagination{
+    margin-top: 20px;
+    text-align: center;
+}
+table{
+    width: 100%;
+    border-collapse: collapse;
+}
+th,td{
+   border: 1px solid black;
+   padding: 8px;
+   text-align: center;
+
+}
+th{
+    background-color: #f2f2f2;
+}

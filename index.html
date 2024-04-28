@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main-Evaluation-60days</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1>Employee management System</h1>
+        <div>
+            <label for="department">Filter by Department:</label>
+            <select name="" id="department">
+                <option value="">--Select Department--</option>
+                <option value="hr">hr</option>
+                <option value="finance">finance</option>
+                <option value="marketing">marketing</option>
+                <option value="engineering">engineering</option>
+                <option value="operations">operations</option>
+            </select>
+
+            <label for="gender">Filter by gender</label>
+            <select name="" id="gender">
+                <option value="">--Select Gender--</option>
+                <option value="male">male</option>
+                <option value="female">female</option>
+                <option value="others">others</option>
+            </select>
+
+            <label for="sort">Sort by Salary</label>
+            <select name="" id="sort">
+                <option value="">--Select order--</option>
+                <option value="asc">low to high</option>
+                <option value="desc">high to low</option>
+            </select>
+        </div>
+
+        <table id="employeeTable">
+            <thead>
+                <tr>
+                    <th>S.no</th>
+                    <th>Name</th>
+                    <th>Gender</th>
+                    <th>Department</th>
+                    <th>Salary</th>
+                </tr>
+            </thead>
+
+            <tbody id="employeeData">
+                <!-- employeebody will be here -->
+
+            </tbody>
+
+        </table>
+
+        <div id="pagination">
+            <!-- pagination will be here -->
+            <button id="prevPage" disabled>Prev</button>
+            <button id="nextPage">Next</button>
+        </div>
+
+
+    </div>
+
+    
+</body>
+
+<script src="index.js"></script>
+</html>
