@@ -1,28 +1,22 @@
-
-body{
+body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     width: 80%;
     margin: auto;
 }
-th{
-    background-color: #cdcbcb;
-}
-tr{
-    background-color: rgb(195, 244, 227);
-}
+
 h1 {
     text-align: center;
 }
 
-.filter-sort-container p{ 
+.filter-sort-container p { 
     font-size: 20px;
 }
 
 .filter-sort-container  {
-  display: flex;
-  align-items: center;
+    display: flex;
+    align-items: center;
 }
 
 select {
@@ -30,11 +24,19 @@ select {
     height: 40px;
 }
 
-#EmpTable {
+#employee-table {
     width: 90%;
     margin: auto;
     text-align: left;
     font-size: 20px;
+}
+
+#employee-table th {
+    background-color: #cdcbcb;
+}
+
+#employee-table tr {
+    background-color: rgb(195, 244, 227);
 }
 
 #pagination {

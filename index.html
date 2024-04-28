@@ -13,7 +13,7 @@
     <div class="filter-sort-container" style="display: flex; justify-content: space-evenly;">
         <!-- Department Filter  -->
         <p>Filter by Department : </p>
-        <select name="" id="dept-filter">
+        <select name="" id="department-filter">
             <option value="">--Select Department--</option>
             <option value="engineering">Engineering</option>
             <option value="finance">Finance</option>
@@ -32,7 +32,7 @@
 
         <!-- Sort By Salary  -->
         <p>Sort By Salary : </p>
-        <select name="" id="salary-sort">
+        <select name="" id="salary-sort-filter">
             <option value="">--Select Sorting-- </option>
             <option value="asc">Low to High</option>
             <option value="desc">High to Low</option>
@@ -40,7 +40,7 @@
     </div>
  <hr>
     <div id="employee-container">
-            <table id="EmpTable">
+            <table id="employee-table">
                 <thead>
                     <tr>
                         <th>S. No </th>
@@ -50,15 +50,15 @@
                         <th>Salary</th>
                     </tr>
                 </thead>
-                <tbody id="tbody">
+                <tbody id="employee-body">
                     <!-- All Dyanamic tr and td here  -->
                 </tbody>
             </table>
     </div>
     
     <div id="pagination">
-        <button id="prev">Prev</button>
-        <button id="next">Next</button>
+        <button id="prev-button">Prev</button>
+        <button id="next-button">Next</button>
     </div>
     
     <script src="index.js"></script>

@@ -1,51 +1,50 @@
-
-const EmpBody = document.getElementById('tbody');
-const prevButton = document.getElementById('prev');
-const nextButton = document.getElementById('next');
+const employeeBody = document.getElementById('employee-body');
+const prevButton = document.getElementById('prev-button');
+const nextButton = document.getElementById('next-button');
 let currentPage = 1;
 const limit = 10; 
 
-const showEmployees = (EmpList) => {
-    EmpBody.innerHTML = "";
+const showEmployees = (employeeList) => {
+    employeeBody.innerHTML = "";
 
-    EmpList.forEach((emp, index) => {
+    employeeList.forEach((emp, index) => {
         const tRow = document.createElement('tr');
 
-        const SNotd = document.createElement('td');
-        SNotd.textContent = (currentPage - 1) * limit + index + 1;
+        const sNoTd = document.createElement('td');
+        sNoTd.textContent = (currentPage - 1) * limit + index + 1;
 
-        const Nametd = document.createElement('td');
-        Nametd.textContent = emp.name;
+        const nameTd = document.createElement('td');
+        nameTd.textContent = emp.name;
 
-        const Gendertd = document.createElement('td');
-        Gendertd.textContent = emp.gender;
+        const genderTd = document.createElement('td');
+        genderTd.textContent = emp.gender;
 
-        const Departmenttd = document.createElement('td');
-        Departmenttd.textContent = emp.department;
+        const departmentTd = document.createElement('td');
+        departmentTd.textContent = emp.department;
 
-        const Salarytd = document.createElement('td');
-        Salarytd.textContent = emp.salary;
+        const salaryTd = document.createElement('td');
+        salaryTd.textContent = emp.salary;
 
-        tRow.append(SNotd, Nametd, Gendertd, Departmenttd, Salarytd);
-        EmpBody.appendChild(tRow);
+        tRow.append(sNoTd, nameTd, genderTd, departmentTd, salaryTd);
+        employeeBody.appendChild(tRow);
     });
 };
 
-const GetEmpData = async (sortValue, deptFilterValue, genderFiterValue, page) => {
+const getEmployeeData = async (sortValue, departmentFilterValue, genderFilterValue, page) => {
     
     let URL = `https://dbioz2ek0e.execute-api.ap-south-1.amazonaws.com/mockapi/get-employees?page=1&limit=10`;
     if(page) {
-        let URL = `https://dbioz2ek0e.execute-api.ap-south-1.amazonaws.com/mockapi/get-employees?page=${page}&limit=${limit}`;
+        URL = `https://dbioz2ek0e.execute-api.ap-south-1.amazonaws.com/mockapi/get-employees?page=${page}&limit=${limit}`;
     }
     
     if (sortValue) {
         URL += `&sort=salary&order=${sortValue}`;
     }
-    if (deptFilterValue) {
-        URL += `&filterBy=department&filterValue=${deptFilterValue}`;
+    if (departmentFilterValue) {
+        URL += `&filterBy=department&filterValue=${departmentFilterValue}`;
     }
-    if (genderFiterValue) {
-        URL += `&filterBy=gender&filterValue=${genderFiterValue}`;
+    if (genderFilterValue) {
+        URL += `&filterBy=gender&filterValue=${genderFilterValue}`;
     }
 
     try {
@@ -57,31 +56,31 @@ const GetEmpData = async (sortValue, deptFilterValue, genderFiterValue, page) =>
     }
 };
 
-GetEmpData();
+getEmployeeData();
 
-const sortOrder = document.getElementById('salary-sort');
-sortOrder.addEventListener('change', () => {
-    GetEmpData(sortOrder.value, '', '', currentPage);
+const salarySortFilter = document.getElementById('salary-sort-filter');
+salarySortFilter.addEventListener('change', () => {
+    getEmployeeData(salarySortFilter.value, '', '', currentPage);
 });
 
-const deptFilter = document.getElementById('dept-filter');
-deptFilter.addEventListener('change', () => {
-    GetEmpData('', deptFilter.value, '', currentPage);
+const departmentFilter = document.getElementById('department-filter');
+departmentFilter.addEventListener('change', () => {
+    getEmployeeData('', departmentFilter.value, '', currentPage);
 });
 
 const genderFilter = document.getElementById('gender-filter');
 genderFilter.addEventListener('change', () => {
-    GetEmpData('', '', genderFilter.value, currentPage);
+    getEmployeeData('', '', genderFilter.value, currentPage);
 });
 
 prevButton.addEventListener('click', () => {
     if (currentPage > 1) {
         currentPage--;
-        GetEmpData('', '', '', currentPage);
+        getEmployeeData('', '', '', currentPage);
     }
 });
 
 nextButton.addEventListener('click', () => {
     currentPage++;
-    GetEmpData('', '', '', currentPage);
+    getEmployeeData('', '', '', currentPage);
 });
